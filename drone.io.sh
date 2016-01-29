@@ -3,7 +3,7 @@
 echo adding elasticsearch repository
 gpg --keyserver pgpkeys.mit.edu --recv-key C90F9CB90E1FAD0C && gpg --export --armor C90F9CB90E1FAD0C | sudo apt-key add - 2> /dev/null > /dev/null
 wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add - > /dev/null
-echo "deb http://packages.elastic.co/elasticsearch/2.x/debian stable main" | sudo tee -a /etc/apt/sources.list.d/elasticsearch-2.x.list > /dev/null
+echo "deb http://packages.elastic.co/elasticsearch/1.5/debian stable main" | sudo tee -a /etc/apt/sources.list > /dev/null
 
 echo delete multiple google chrome entries
 sudo rm /etc/apt/sources.list.d/google*
