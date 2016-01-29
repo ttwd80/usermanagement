@@ -8,6 +8,10 @@
 	<elasticsearch:transport-client id="elasticsearch"
 		cluster-nodes="127.0.0.1:9300" />
 
+	<bean id="elasticsearchTemplate"
+		class="org.springframework.data.elasticsearch.core.ElasticsearchTemplate">
+		<constructor-arg ref="elasticsearch" />
+	</bean>
 
 	<elasticsearch:repositories
 		base-package="com.github.ttwd80.usermanagement.model.repository" />
