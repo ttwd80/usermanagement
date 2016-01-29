@@ -10,7 +10,7 @@ import com.github.ttwd80.usermanagement.model.repository.UserRepository;
 import static org.junit.Assert.*;
 import static org.hamcrest.core.IsEqual.*;
 
-@ContextConfiguration(locations = {})
+@ContextConfiguration(locations = { "classpath:spring-properties.xml", "classpath:" })
 public class ElasticSearchDbIT extends AbstractJUnit4SpringContextTests {
 
 	@Autowired
