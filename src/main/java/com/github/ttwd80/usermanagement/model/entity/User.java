@@ -1,4 +1,4 @@
-package com.github.ttwd80.usermanagement.model.entities;
+package com.github.ttwd80.usermanagement.model.entity;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
