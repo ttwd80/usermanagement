@@ -3,7 +3,7 @@ package com.github.ttwd80.usermanagement.model.entity;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
-@Document(indexName = "#{'${elasticsearch.index.name}'}", type = "user")
+@Document(indexName = "#{es['elasticsearch.index.name']}", type = "user")
 public class User {
 
 	@Id
