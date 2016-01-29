@@ -9,6 +9,7 @@
 	<configs>
 		<config>src/main/resources/spring-properties.xml</config>
 		<config>src/main/resources/spring-elasticsearch.xml</config>
+		<config>src/main/webapp/WEB-INF/spring-servlet.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
