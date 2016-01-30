@@ -26,9 +26,10 @@ sudo updatedb
 sudo apt-get update 2> /dev/null > /dev/null
 sudo apt-get install elasticsearch -y  2> /dev/null > /dev/null
 echo | sudo tee -a /etc/default/elasticsearch 
-echo 'ES_JAVA_OPTS="-Djava.net.preferIPv4Stack=true"' | sudo tee -a /etc/default/elasticsearch 
+echo 'ES_JAVA_OPTS="-Djava.net.preferIPv4Stack=true"' | sudo tee -a /etc/default/elasticsearch > /dev/nul
 sudo service elasticsearch start
 sleep 10
+sudo netstat -pnlt | grep "9.0."
 sudo service elasticsearch status
 
 echo purge openjdk
@@ -38,9 +39,6 @@ sudo apt-get autoremove -y 2> /dev/null > /dev/null
 
 
 echo install oracle jdk
-sudo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
-sudo debconf shared/accepted-oracle-license-v1-1 seen true |  sudo debconf-set-selections
-
 sudo apt-get install oracle-java8-installer -y 2> /dev/null > /dev/null
 sudo apt-get update 2> /dev/null > /dev/null
 sudo apt-get autoremove -y > /dev/null 2> /dev/null
@@ -52,7 +50,7 @@ wget -q "http://apache.uberglobalmirror.com/maven/maven-3/${MAVEN_VERSION}/binar
 tar zxf apache-maven-${MAVEN_VERSION}-bin.tar.gz
 sudo mv apache-maven-${MAVEN_VERSION} /opt
 rm apache-maven-${MAVEN_VERSION}-bin.tar.gz
-mvn --version
+mvn --version | head -1
 
 echo xvfb
 sudo updatedb
