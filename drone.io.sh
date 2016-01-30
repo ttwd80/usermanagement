@@ -38,8 +38,8 @@ sudo apt-get autoremove -y 2> /dev/null > /dev/null
 
 
 echo install oracle jdk
-debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
-debconf shared/accepted-oracle-license-v1-1 seen true |  sudo debconf-set-selections
+sudo debconf shared/accepted-oracle-license-v1-1 select true | sudo debconf-set-selections
+sudo debconf shared/accepted-oracle-license-v1-1 seen true |  sudo debconf-set-selections
 
 sudo apt-get install oracle-java8-installer -y 2> /dev/null > /dev/null
 sudo apt-get update 2> /dev/null > /dev/null
