@@ -48,15 +48,15 @@ sudo apt-get install oracle-java8-installer -y 2> /dev/null > /dev/null
 sudo apt-get update 2> /dev/null > /dev/null
 sudo apt-get autoremove -y > /dev/null 2> /dev/null
 sudo updatedb 2> /dev/null > /dev/null
-java -version | head -1
+ls -l `which java`
 
 echo installing maven
 wget -q "http://apache.uberglobalmirror.com/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz"
 tar zxf apache-maven-${MAVEN_VERSION}-bin.tar.gz
 sudo mv apache-maven-${MAVEN_VERSION} /opt
 rm apache-maven-${MAVEN_VERSION}-bin.tar.gz
+export PATH=/opt/apache-maven-${MAVEN_VERSION}/bin:${PATH}
 mvn --version | head -1
-
 
 chmod a+x init.sh
 ./init.sh
