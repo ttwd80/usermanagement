@@ -60,6 +60,13 @@ public class UserDetailsServiceImplTest {
 		UserDetails user = sut.loadUserByUsername("good");
 		assertThat(user.getAuthorities().size(), equalTo(2));
 	}
+	
+	@Test
+	public void testLoadUserByUsernameCheckId() {
+		when(userRepository.findOne("good")).thenReturn(createUser(new String[] { "ROLE_MANAGER", "ROLE_SUPERVISOR" }));
+		UserDetails user = sut.loadUserByUsername("good");
+		assertThat(user.getAuthorities().size(), equalTo(2));
+	}
 
 	@Test(expected = UsernameNotFoundException.class)
 	public void testLoadUserByUsernameNoUser() {

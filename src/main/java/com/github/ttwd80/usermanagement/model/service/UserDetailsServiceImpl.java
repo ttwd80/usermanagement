@@ -33,7 +33,7 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 			final String password = user.getPassword();
 			final List<? extends GrantedAuthority> authorities = toList(user.getRoles());
 			final org.springframework.security.core.userdetails.User result = new org.springframework.security.core.userdetails.User(
-					username, password, authorities);
+					user.getId(), password, authorities);
 			return result;
 		}
 	}
