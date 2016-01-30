@@ -44,4 +44,9 @@ echo 'ES_JAVA_OPTS="-Djava.net.preferIPv4Stack=true"' | sudo tee -a /etc/default
 sudo service elasticsearch restart
 sleep 10
 
+chmod a+x init.sh
+
+./init.sh
+
+
 
