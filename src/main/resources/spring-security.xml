@@ -13,6 +13,8 @@
 	<security:http pattern="/login" use-expressions="false">
 		<security:intercept-url pattern="/login"
 			access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<!-- needed to satisfy validator -->
+		<security:http-basic />
 	</security:http>
 
 	<security:http use-expressions="false">

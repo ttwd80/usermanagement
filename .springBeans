@@ -10,9 +10,23 @@
 		<config>src/main/resources/spring-properties.xml</config>
 		<config>src/main/resources/spring-elasticsearch.xml</config>
 		<config>src/main/webapp/WEB-INF/spring-servlet.xml</config>
+		<config>src/main/resources/spring-service.xml</config>
 	</configs>
 	<autoconfigs>
 	</autoconfigs>
 	<configSets>
+		<configSet>
+			<name><![CDATA[config]]></name>
+			<allowBeanDefinitionOverriding>true</allowBeanDefinitionOverriding>
+			<incomplete>false</incomplete>
+			<configs>
+				<config>src/main/resources/spring-elasticsearch.xml</config>
+				<config>src/main/resources/spring-properties.xml</config>
+				<config>src/main/resources/spring-service.xml</config>
+				<config>src/main/webapp/WEB-INF/spring-servlet.xml</config>
+			</configs>
+			<profiles>
+			</profiles>
+		</configSet>
 	</configSets>
 </beansProjectDescription>
