@@ -43,7 +43,7 @@ sudo apt-get install oracle-java8-installer -y 2> /dev/null > /dev/null
 sudo apt-get update 2> /dev/null > /dev/null
 sudo apt-get autoremove -y > /dev/null 2> /dev/null
 sudo updatedb 2> /dev/null > /dev/null
-java -version
+java -version | head -1
 
 echo installing maven
 wget -q "http://apache.uberglobalmirror.com/maven/maven-3/${MAVEN_VERSION}/binaries/apache-maven-${MAVEN_VERSION}-bin.tar.gz"
@@ -55,6 +55,8 @@ mvn --version | head -1
 echo xvfb
 sudo updatedb
 locate vfb
+sudo apt-get install xvfb -y
+cat /etc/init/xvfb.conf
 
 chmod a+x init.sh
 ./init.sh
