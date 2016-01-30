@@ -18,9 +18,11 @@ locate -b stdio.h | head -1
 
 echo xvfb
 sudo updatedb
-locate vfb
-sudo apt-get install xvfb -y
+sudo apt-get install xvfb -y 2> /dev/null > /dev/null
+echo sudo sed -i "s/1024x768x24/1920x1024x32/g" /etc/init/xvfb.conf
 cat /etc/init/xvfb.conf
+sudo start xvfb
+sudo ps -ef | grep -i xvfb
 
 exit 1
 
