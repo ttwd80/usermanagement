@@ -6,6 +6,7 @@ sudo apt-get update > /dev/null
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google.list > /dev/null
 sudo apt-get update > /dev/null
+sudo apt-get purge google-chrome-unstable
 sudo apt-get install google-chrome-stable
 ls -l /usr/bin/google-chrome
 
