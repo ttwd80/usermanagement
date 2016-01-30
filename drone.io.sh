@@ -16,6 +16,14 @@ sudo apt-get install mlocate -y 2> /dev/null > /dev/null
 sudo updatedb
 locate -b stdio.h | head -1
 
+echo xvfb
+sudo updatedb
+locate vfb
+sudo apt-get install xvfb -y
+cat /etc/init/xvfb.conf
+
+exit 1
+
 echo adding elasticsearch repository
 sudo rm -rf `locate elasticsearch | egrep -v "/etc/apt/sources.list.d|/home"`
 gpg --keyserver pgpkeys.mit.edu --recv-key C90F9CB90E1FAD0C 2> /dev/null > /dev/null
@@ -37,7 +45,6 @@ sudo apt-get purge openjdk-6-jdk openjdk-6-jre openjdk-6-jre-headless openjdk-6-
 sudo apt-get purge openjdk-7-jdk openjdk-7-jre openjdk-7-jre-headless openjdk-7-jre-lib -y > /dev/null
 sudo apt-get autoremove -y 2> /dev/null > /dev/null
 
-
 echo install oracle jdk
 sudo apt-get install oracle-java8-installer -y 2> /dev/null > /dev/null
 sudo apt-get update 2> /dev/null > /dev/null
@@ -52,14 +59,6 @@ sudo mv apache-maven-${MAVEN_VERSION} /opt
 rm apache-maven-${MAVEN_VERSION}-bin.tar.gz
 mvn --version | head -1
 
-echo xvfb
-sudo updatedb
-locate vfb
-sudo apt-get install xvfb -y
-cat /etc/init/xvfb.conf
 
 chmod a+x init.sh
 ./init.sh
-
-
-
