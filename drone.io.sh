@@ -26,7 +26,7 @@ sudo updatedb
 sudo apt-get update 2> /dev/null > /dev/null
 sudo apt-get install elasticsearch -y  2> /dev/null > /dev/null
 echo | sudo tee -a /etc/default/elasticsearch 
-echo 'ES_JAVA_OPTS="-Djava.net.preferIPv4Stack=true"' | sudo tee -a /etc/default/elasticsearch > /dev/nul
+echo 'ES_JAVA_OPTS="-Djava.net.preferIPv4Stack=true"' | sudo tee -a /etc/default/elasticsearch > /dev/null
 sudo service elasticsearch start
 sleep 10
 sudo netstat -pnlt | grep "9.0."
