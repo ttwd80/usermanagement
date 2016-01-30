@@ -58,5 +58,14 @@ rm apache-maven-${MAVEN_VERSION}-bin.tar.gz
 export PATH=/opt/apache-maven-${MAVEN_VERSION}/bin:${PATH}
 mvn --version | head -1
 
+echo handle chrome driver
+cd /tmp
+wget http://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip
+unzip chromedriver_linux64.zip
+sudo netstat -pnlt | grep 9515
+./chromedriver &
+sudo netstat -pnlt | grep 9515
+cd - 
+
 chmod a+x init.sh
 ./init.sh
