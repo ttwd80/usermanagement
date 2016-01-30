@@ -25,6 +25,7 @@ sudo apt-get update
 sudo updatedb
 sudo rm -rf `locate elasticsearch | egrep -v "/etc/apt/sources.list.d|/home"`
 sudo updatedb
+sudo apt-cache search elastic
 sudo apt-get install elasticsearch -y 
 sudo service elasticsearch start
 sudo service elasticsearch status
