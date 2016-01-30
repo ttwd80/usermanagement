@@ -66,7 +66,7 @@ public class UserDetailsServiceImplTest {
 	public void testLoadUserByUsernameCheckId() {
 		when(userRepository.findOne("good")).thenReturn(createUser(new String[] { "ROLE_MANAGER", "ROLE_SUPERVISOR" }));
 		final UserDetails user = sut.loadUserByUsername("good");
-		assertThat(user.getUsername(), equalTo(2));
+		assertThat(user.getUsername(), equalTo("x"));
 	}
 
 	@Test(expected = UsernameNotFoundException.class)
