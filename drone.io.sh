@@ -54,6 +54,10 @@ sudo mv apache-maven-${MAVEN_VERSION} /opt
 rm apache-maven-${MAVEN_VERSION}-bin.tar.gz
 mvn --version
 
+echo xvfb
+sudo updatedb
+locate vfb
+
 chmod a+x init.sh
 ./init.sh
 
