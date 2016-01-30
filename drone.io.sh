@@ -8,7 +8,7 @@ sudo apt-get update > /dev/null
 sudo apt-get purge google-chrome-unstable > /dev/null 2> /dev/null
 sudo apt-get install google-chrome-stable -y > /dev/null 2> /dev/null
 ls -l /usr/bin/google-chrome
-sudo rm -f /var/lib/apt/lists/dl.google.com_linux_chrome_deb_dists_stable_main_binary-i386_Packages
+sudo rm -f /etc/apt/sources.list.d/google.list
 
 echo install mlocate
 sudo apt-get update > /dev/null
