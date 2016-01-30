@@ -32,8 +32,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
 		} else {
 			final String password = user.getPassword();
 			final List<? extends GrantedAuthority> authorities = toList(user.getRoles());
+			final String id = user.getId();
 			final org.springframework.security.core.userdetails.User result = new org.springframework.security.core.userdetails.User(
-					user.getId(), password, authorities);
+					id, password, authorities);
 			return result;
 		}
 	}
