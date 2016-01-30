@@ -14,7 +14,7 @@ import org.openqa.selenium.OutputType;
 import org.openqa.selenium.TakesScreenshot;
 import org.openqa.selenium.WebElement;
 
-public class WebLoginPage extends AbstractWebIT {
+public class WebLoginPageIT extends AbstractWebIT {
 
 	@Test
 	public void testLoginPageCanBeViewed() throws IOException {

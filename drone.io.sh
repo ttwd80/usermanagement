@@ -60,10 +60,11 @@ mvn --version | head -1
 
 echo handle chrome driver
 cd /tmp
-wget http://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip
+wget -q http://chromedriver.storage.googleapis.com/2.20/chromedriver_linux64.zip
 unzip chromedriver_linux64.zip
 sudo netstat -pnlt | grep 9515
 ./chromedriver &
+sleep 10
 sudo netstat -pnlt | grep 9515
 cd - 
 
