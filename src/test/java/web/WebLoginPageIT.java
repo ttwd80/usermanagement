@@ -21,7 +21,7 @@ public class WebLoginPageIT extends AbstractWebIT {
 		webDriver.get(APPLICATION_PREFIX + "/");
 		final List<WebElement> items = webDriver.findElements(By.id("form-login"));
 		final File file = ((TakesScreenshot) (webDriver)).getScreenshotAs(OutputType.FILE);
-		FileUtils.copyFile(file, new File("/tmp/image-0001.png"));
+		FileUtils.copyFile(file, new File("image-0001.png"));
 		assertThat(items.size(), equalTo(1));
 	}
 }
