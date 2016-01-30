@@ -1,5 +1,7 @@
 package com.github.ttwd80.usermanagement.model.entity;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Document;
 
@@ -10,6 +12,8 @@ public class User {
 	private String id;
 
 	private String password;
+
+	private List<String> roles;
 
 	public String getId() {
 		return id;
@@ -25,6 +29,14 @@ public class User {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public List<String> getRoles() {
+		return roles;
+	}
+
+	public void setRoles(List<String> roles) {
+		this.roles = roles;
 	}
 
 }

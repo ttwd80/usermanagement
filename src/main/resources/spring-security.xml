@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:security="http://www.springframework.org/schema/security"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+	<security:http pattern="/webjars/**" security="none" />
+	<security:http pattern="/resources/**" security="none" />
+
+	<security:http pattern="/login" use-expressions="false">
+		<security:intercept-url pattern="/login"
+			access="IS_AUTHENTICATED_ANONYMOUSLY" />
+	</security:http>
+
+	<security:http use-expressions="false">
+		<security:intercept-url pattern="/"
+			access="IS_AUTHENTICATED_ANONYMOUSLY" />
+		<security:intercept-url pattern="/admin/**"
+			access="ROLE_ADMIN" />
+		<security:intercept-url pattern="/user/**"
+			access="ROLE_USER" />
+		<security:intercept-url pattern="/**"
+			access="ROLE_USER, ROLE_ADMIN" />
+		<security:form-login login-page="/login"
+			login-processing-url="/security_check" authentication-failure-url="/login?fail=true"
+			default-target-url="/index" username-parameter="username"
+			password-parameter="password" always-use-default-target="true" />
+		<security:logout logout-url="/logout"
+			logout-success-url="/login" invalidate-session="true" />
+		<security:headers />
+	</security:http>
+
+	<bean id="passwordEncoder"
+		class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder"></bean>
+
+	<security:authentication-manager>
+		<security:authentication-provider
+			user-service-ref="userDetailsService">
+			<security:password-encoder hash="bcrypt" />
+		</security:authentication-provider>
+	</security:authentication-manager>
+</beans>

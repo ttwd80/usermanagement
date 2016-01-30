@@ -1,27 +1,52 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:mvc="http://www.springframework.org/schema/mvc"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
-		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
 	<bean id="templateResolver"
 		class="org.thymeleaf.templateresolver.ServletContextTemplateResolver">
 		<property name="prefix" value="/WEB-INF/templates/" />
 		<property name="suffix" value=".html" />
 		<property name="templateMode" value="HTML5" />
+		<property name="cacheable" value="false" />
+	</bean>
+
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basename" value="messages" />
+		<property name="commonMessages">
+			<util:properties location="classpath:webjar.properties" />
+		</property>
 	</bean>
 
 	<bean id="templateEngine" class="org.thymeleaf.spring4.SpringTemplateEngine">
 		<property name="templateResolver" ref="templateResolver" />
+		<property name="messageSource">
+			<ref bean="messageSource" />
+		</property>
+		<property name="additionalDialects">
+			<set>
+				<bean
+					class="org.thymeleaf.extras.springsecurity4.dialect.SpringSecurityDialect" />
+			</set>
+		</property>
 	</bean>
-
 	<bean id="viewResolver" class="org.thymeleaf.spring4.view.ThymeleafViewResolver">
 		<property name="templateEngine" ref="templateEngine" />
 		<property name="order" value="1" />
 	</bean>
 
 	<mvc:annotation-driven />
+	<mvc:default-servlet-handler />
 
-	<mvc:view-controller path="/" view-name="index" />
+	<mvc:view-controller path="/" view-name="redirect:/index" />
 
+	<mvc:view-controller path="/login" view-name="login" />
+
+
+	<mvc:resources location="/resources/" mapping="/resources/**" />
+	<mvc:resources location="/webjars/" mapping="/webjars/**" />
 </beans>
