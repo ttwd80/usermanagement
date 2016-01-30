@@ -1,23 +1,25 @@
 #!/bin/bash
-ls -l /usr/bin/google-chrome
 echo delete multiple google chrome entries
 sudo rm /etc/apt/sources.list.d/google*
 sudo apt-get update > /dev/null
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google.list > /dev/null
-sudo apt-get update > /dev/null
-sudo apt-get purge google-chrome-unstable
-sudo apt-get install google-chrome-stable
+sudo apt-get update > /dev/null 2> /dev/null
+sudo apt-get purge google-chrome-unstable > /dev/null 2> /dev/null
+sudo apt-get install google-chrome-stable -y > /dev/null 2> /dev/null
 ls -l /usr/bin/google-chrome
 
-# echo adding elasticsearch repository
-# gpg --keyserver pgpkeys.mit.edu --recv-key C90F9CB90E1FAD0C && gpg --export --armor C90F9CB90E1FAD0C | sudo apt-key add - 2> /dev/null > /dev/null
-# wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add - > /dev/null
-# echo "deb http://packages.elastic.co/elasticsearch/1.7/debian stable main" | sudo tee -a /etc/apt/sources.list > /dev/null
+echo install mlocate
+sudo apt-get install mlocate -y 2> /dev/null > /dev/null
+sudo updatedb
+locate -b stdio.h | head
 
-# sudo apt-get update > /dev/null
+echo adding elasticsearch repository
+gpg --keyserver pgpkeys.mit.edu --recv-key C90F9CB90E1FAD0C && gpg --export --armor C90F9CB90E1FAD0C | sudo apt-key add - 2> /dev/null > /dev/null
+wget -qO - https://packages.elastic.co/GPG-KEY-elasticsearch | sudo apt-key add - > /dev/null
+echo "deb http://packages.elastic.co/elasticsearch/1.7/debian stable main" | sudo tee -a /etc/apt/sources.list > /dev/null
+sudo apt-get update > /dev/null
 
-# sudo apt-get install mlocate -y 2> /dev/null > /dev/null
 
 # sudo updatedb
 # sudo rm -rf `locate elasticsearch | egrep -v "/etc/apt/sources.list.d|/home"`
