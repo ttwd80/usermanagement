@@ -4,7 +4,7 @@ echo delete multiple google chrome entries
 sudo rm /etc/apt/sources.list.d/google*
 sudo apt-get update > /dev/null
 wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
-echo "deb deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google.list > /dev/null
+echo "deb http://dl.google.com/linux/chrome/deb/ stable main" | sudo tee -a /etc/apt/sources.list.d/google.list > /dev/null
 sudo apt-get update > /dev/null
 sudo apt-get install google-chrome-stable
 ls -l /usr/bin/google-chrome
