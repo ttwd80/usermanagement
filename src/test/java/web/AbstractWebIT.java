@@ -1,6 +1,7 @@
 package web;
 
 import org.junit.Before;
+import org.openqa.selenium.Dimension;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebDriver.Window;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,9 @@ public abstract class AbstractWebIT extends AbstractJUnit4SpringContextTests {
 	@Before
 	public void setUp() {
 		final Window window = webDriver.manage().window();
-		window.fullscreen();
+		window.maximize();
+		final Dimension d = window.getSize();
+		final Dimension dimension = new Dimension(WINDOW_WIDTH, d.getHeight());
+		window.setSize(dimension);
 	}
 }

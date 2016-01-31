@@ -68,5 +68,6 @@ sleep 10
 sudo netstat -pnlt | grep 9515
 cd - 
 
+
 chmod a+x init.sh
 ./init.sh
