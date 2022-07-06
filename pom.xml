@@ -16,7 +16,7 @@
 		<jackson.version>2.12.6.1</jackson.version>
 		<cargo.servlet.port>58080</cargo.servlet.port>
 		<cargo.tomcat.ajp.port>58009</cargo.tomcat.ajp.port>
-		<tomcat.version>8.0.30</tomcat.version>
+		<tomcat.version>8.5.9</tomcat.version>
 	</properties>
 	<dependencies>
 		<!-- Test -->
